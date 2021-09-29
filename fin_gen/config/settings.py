@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'fin_gen.apps.fingen_usuario',
 ]
 
 MIDDLEWARE = [
@@ -106,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+AUTH_USER_MODEL = 'fingen_usuario.Usuario'
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
