@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'fin_gen.apps.fingen_usuario',
     'fin_gen.apps.fingen_atividade',
+    'fin_gen.apps.fingen_financeiro',
 ]
 
 MIDDLEWARE = [
