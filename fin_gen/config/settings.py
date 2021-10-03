@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'fin_gen.apps.fingen_usuario',
+    'fin_gen.apps.fingen_atividade',
 ]
 
 MIDDLEWARE = [
