@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Atividade, Categoria, Icone
+
+admin.site.register(Atividade)
+admin.site.register(Categoria)
+admin.site.register(Icone)
