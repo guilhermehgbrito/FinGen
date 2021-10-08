@@ -2,6 +2,7 @@ from uuid import uuid4
 
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
+from fin_gen.apps.fingen_financeiro.models.moeda import moeda_default
 
 
 class UsuarioManager(BaseUserManager):
@@ -45,6 +46,7 @@ class Usuario(AbstractUser):
     is_staff        = models.BooleanField('Equipe', default=False)
     criado_em       = models.DateTimeField('Data de criação', auto_now_add=True)
     atualizado_em   = models.DateTimeField('Última atualização', auto_now=True)
+    moeda           = models.ForeignKey('fingen_financeiro.Moeda', on_delete=models.SET_DEFAULT, default=moeda_default)
 
     objects         = UsuarioManager()
 
