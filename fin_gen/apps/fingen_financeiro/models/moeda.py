@@ -10,4 +10,4 @@ class Moeda(Base):
 
 def moeda_default():
     moeda = Moeda.objects.get_or_create(codigo="BRL", defaults={"nome": "Real brasileiro", "simbolo": "R$"})
-    return moeda[0]
+    return moeda[0].id
