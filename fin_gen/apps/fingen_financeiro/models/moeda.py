@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.utils import ProgrammingError
 from fin_gen.base.models.base import Base
 
 
@@ -9,5 +10,8 @@ class Moeda(Base):
 
 
 def moeda_default():
-    moeda = Moeda.objects.get_or_create(codigo="BRL", defaults={"nome": "Real brasileiro", "simbolo": "R$"})
-    return moeda[0].id
+    try:
+        moeda = Moeda.objects.get_or_create(codigo="BRL", defaults={"nome": "Real brasileiro", "simbolo": "R$"})
+        return moeda[0].id
+    except ProgrammingError:
+        return None
