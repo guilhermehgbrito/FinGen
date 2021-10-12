@@ -12,7 +12,7 @@ class UsuarioChangeForm(UserChangeForm):
 class UsuarioCreationForm(UserCreationForm):
     class Meta:
         model = Usuario
-        fields = ('email',)
+        fields = ('first_name', 'last_name', 'telefone', 'username', 'email')
 
 class UsuarioAuthForm(AuthenticationForm):
     username = forms.EmailField(max_length=256)
