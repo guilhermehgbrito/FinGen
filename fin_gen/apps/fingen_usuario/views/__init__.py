@@ -1,0 +1,1 @@
+from .registro import registro
