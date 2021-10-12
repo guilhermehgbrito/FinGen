@@ -1,5 +1,6 @@
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
-from django.forms.fields import EmailField
+from django import forms
+from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
+                                       UserCreationForm)
 from fin_gen.apps.fingen_usuario.models import Usuario
 
 
@@ -12,3 +13,6 @@ class UsuarioCreationForm(UserCreationForm):
     class Meta:
         model = Usuario
         fields = ('email',)
+
+class UsuarioAuthForm(AuthenticationForm):
+    username = forms.EmailField(max_length=256)
