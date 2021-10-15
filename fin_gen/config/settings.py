@@ -74,6 +74,9 @@ TEMPLATES = [
     },
 ]
 
+USE_THOUSAND_SEPARATOR = True
+THOUSAND_SEPARATOR = '.'
+
 WSGI_APPLICATION = 'fin_gen.wsgi.application'
 
 
