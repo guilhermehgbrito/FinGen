@@ -13,10 +13,10 @@ from fin_gen.apps.fingen_financeiro.utils import (
 
 @login_required
 def index(request):
-    carteiras = Carteira.objects.filter(usuario=request.user)
+    carteiras = Carteira.objects.filter(usuario=request.user, ativo=True)
     saldo_carteiras = carteiras.values_list('saldo', flat=True)
     saldo_total = sum(saldo_carteiras)
-    atividades = Atividade.objects.filter(carteira__in=carteiras)
+    atividades = Atividade.objects.filter(carteira__in=carteiras, ativo=True)
     atividades_month_group = is_empty(atividades, group_atividades_by_month)
     media_mensal = is_empty(atividades_month_group, atividades_mean)
     atividades_categories = is_empty(atividades, atitivades_categories_percentage)
