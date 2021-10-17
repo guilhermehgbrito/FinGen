@@ -1,1 +1,1 @@
-from .usuario import UsuarioChangeForm, UsuarioCreationForm, UsuarioAuthForm
+from .usuario import UsuarioChangeForm, UsuarioCreationForm, UsuarioAuthForm, UsuarioChangeTemplate, UsuarioPasswordChangeForm
