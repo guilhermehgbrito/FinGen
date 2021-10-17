@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}Usuário{% endblock title %}
+{% block main %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Usuário</h6>
+    </div>
+    <div class="card-body">
+        <form method="post"action="{% url 'edita_usuario' %}" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            {% endbuttons %}
+        </form>
+        <p>Caso queira alterar sua senha acesse <a href="{% url 'edita_senha' %}">este link</a>.</p>
+    </div>
+</div>
+{% endblock main %}
