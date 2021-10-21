@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Carteiras{% endblock title %}
+{% block main %}
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Lista de carteiras</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                {% if carteiras|length < 3 %}
+                                <a class="btn btn-primary text-white my-2" href="{% url 'cria_carteira' %}"><i class="fas fa-plus-square"></i> Criar nova</a>
+                                {% endif %}
+                                <table class="table table-bordered" id="carteiras-table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Saldo</th>
+                                            <th>Editar</th>
+                                            <th>Excluir</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for carteira in carteiras %}
+                                        <tr>
+                                            <td>{{ carteira.nome }}</td>
+                                            <td>{{ user.moeda.simbolo}} {{ carteira.saldo }}</td>
+                                            <td><a href="{% url 'edita_carteira' id=carteira.id %}" class="btn btn-primary text-white"><i class="fas fa-edit"></i></a></td>
+                                            <td><a href="{% url 'exclui_carteira' id=carteira.id %}" class="btn btn-danger text-white"><i class="fas fa-trash-alt"></i></a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+{% endblock main %}

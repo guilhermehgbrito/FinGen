@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:${WEB_PORT}
+    ports: 
+      - "${WEB_PORT}:${WEB_PORT}"
+    volumes: 
+      - .:/usr/src/app/
+    depends_on:
+      - db
+    
+  db:
+    image: postgres:13.2
+    volumes: 
+      - ./db-data:/var/lib/postgresql/data
+    ports: 
+      - "${DB_PORT_PUBLISHED}:${DB_PORT}"
+    environment: 
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+volumes: 
+  db-data:
