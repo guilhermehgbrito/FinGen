@@ -49,10 +49,13 @@ def edita_carteira(request, id):
 
 @login_required
 def exclui_carteira(request, id):
-    carteira = Carteira.objects.get(pk=id)
-    if carteira.usuario != request.user:
-        messages.error(request, "Erro ao deletar!")
+    try:
+        carteira = Carteira.objects.get(pk=id)
+        if carteira.usuario != request.user:
+            messages.error(request, "Erro ao deletar!")
+            return redirect('lista_carteiras')
+        carteira.delete()
+        messages.success(request, "Carteira deletada com sucesso!")
         return redirect('lista_carteiras')
-    carteira.delete()
-    messages.success(request, "Carteira deletada com sucesso!")
-    return redirect('lista_carteiras')
+    except:
+        return redirect('lista_carteiras')
