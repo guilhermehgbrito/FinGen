@@ -1,4 +1,11 @@
-// Call the dataTables jQuery plugin cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json
+// Call the dataTables jQuery plugin 
 $(document).ready(function() {
-  $('#dataTable').DataTable();
+  $('#atividades-table').DataTable({
+    "scrollY": "300px",
+    "scrollX": false,
+    "scrollCollapse": true,
+    "language": {
+      "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json"
+    }
+  });
 });
