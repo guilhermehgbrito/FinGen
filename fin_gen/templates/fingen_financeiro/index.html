@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Dashboard{% endblock title %}
 {% block main %}
 <!-- Main Content -->
@@ -122,3 +123,7 @@
 </div>
 <!-- End of Main Content -->
 {% endblock main %}
+{% block script %}
+    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+{% endblock script %}
