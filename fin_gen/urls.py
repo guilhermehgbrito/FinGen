@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('fin_gen.apps.fingen_usuario.urls')),
     path('', include('fin_gen.apps.fingen_financeiro.urls')),
+    path('atividades/', include('fin_gen.apps.fingen_atividade.urls')),
 ]
