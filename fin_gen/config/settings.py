@@ -111,6 +111,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'fingen_usuario.Usuario'
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/user/login'
+LOGOUT_REDIRECT_URL = '/user/login'
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
