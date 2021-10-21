@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap5',
 
     'fin_gen.apps.fingen_usuario',
     'fin_gen.apps.fingen_atividade',
@@ -73,6 +74,9 @@ TEMPLATES = [
         },
     },
 ]
+
+USE_THOUSAND_SEPARATOR = True
+THOUSAND_SEPARATOR = '.'
 
 WSGI_APPLICATION = 'fin_gen.wsgi.application'
 

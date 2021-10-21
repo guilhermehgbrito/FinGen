@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Carteiras{% endblock title %}
+{% block main %}
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Lista de carteiras</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <a class="btn btn-primary text-white my-2" href="{% url 'cria_atividade' %}"><i class="fas fa-plus-square"></i> Criar nova</a>
+                                <table class="table table-bordered" id="atividades-table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Título</th>
+                                            <th>Descrição</th>
+                                            <th>Valor</th>
+                                            <th>Categoria</th>
+                                            <th>Data de vigência</th>
+                                            <th>Tipo</th>
+                                            <th>Carteira</th>
+                                            <th>Editar</th>
+                                            <th>Excluir</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for atividade in atividades %}
+                                        <tr>
+                                            <td>{{ atividade.titulo }}</td>
+                                            <td>{{ atividade.descricao|truncatewords:5 }}</td>
+                                            <td>{{ atividade.moeda.simbolo }} {{ atividade.valor }}</td>
+                                            <td>{{ atividade.categoria }}</td>
+                                            <td>{{ atividade.data_da_atividade|date:"d/m/Y" }}</td>
+                                            <td>{{ atividade.get_tipo_display }}</td>
+                                            <td>{{ atividade.carteira }}</td>
+                                            <td><a href="{% url 'edita_atividade' id=atividade.id %}" class="btn btn-primary text-white"><i class="fas fa-edit"></i></a></td>
+                                            <td><a href="{% url 'exclui_atividade' id=atividade.id %}" class="btn btn-danger text-white"><i class="fas fa-trash-alt"></i></a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+{% endblock main %}
+{% block script %}
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+{% endblock script %}

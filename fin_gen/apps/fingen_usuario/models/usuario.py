@@ -52,4 +52,4 @@ class Usuario(AbstractUser):
 
     USERNAME_FIELD  = 'email'
 
-    REQUIRED_FIELDS = ['telefone']
+    REQUIRED_FIELDS = ['telefone', 'username']
