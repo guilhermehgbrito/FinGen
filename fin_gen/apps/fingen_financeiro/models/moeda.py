@@ -8,6 +8,8 @@ class Moeda(Base):
     nome = models.CharField('Nome', max_length=64)
     simbolo = models.CharField('Símbolo monetátio', max_length=4, help_text='Símbolo monetário. Ex: R$, C$', null=True)
 
+    def __str__(self) -> str:
+        return self.nome
 
 def moeda_default():
     try:
