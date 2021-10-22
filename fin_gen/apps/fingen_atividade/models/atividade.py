@@ -17,3 +17,6 @@ class Atividade(Base):
     data_da_atividade   = models.DateField('Data de vigência', default=now)
     tipo                = models.CharField('Provento/Desconto', max_length=1, choices=TIPO_CHOICES, default='P')
     carteira            = models.ForeignKey('fingen_financeiro.Carteira', on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.titulo
