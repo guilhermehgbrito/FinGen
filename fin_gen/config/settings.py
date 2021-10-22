@@ -87,14 +87,7 @@ WSGI_APPLICATION = 'fin_gen.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', cast=str),
-        'HOST': config('DB_HOST', cast=str),
-        'PORT': config('DB_PORT', cast=str),
-        'USER': config('DB_USER', cast=str),
-        'PASSWORD': config('DB_PASSWORD', cast=str),
-    }
+    'default': dj_database_url.config()
 }
 
 
