@@ -16,6 +16,6 @@ def registro(request):
             login(request, user)
             return redirect('index')
         else:
-            return HttpResponse(Usuario.objects.all())
+            return redirect('registro')
     else:
         return render(request, 'fingen_usuario/registro.html')
