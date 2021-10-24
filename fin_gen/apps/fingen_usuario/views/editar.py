@@ -17,7 +17,7 @@ def edita_usuario(request):
             return redirect("index")
         else:
             messages.error(request, "Erro ao gravar dados.")
-            return redirect("index")
+            return redirect("edita_usuario")
     else:
         return render(request, "fingen_usuario/editar.html", {"form": form})
 

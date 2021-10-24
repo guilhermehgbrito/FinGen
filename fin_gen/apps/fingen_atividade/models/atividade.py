@@ -20,3 +20,11 @@ class Atividade(Base):
 
     def __str__(self) -> str:
         return self.titulo
+    
+    def delete(self, using=None, keep_parents=False):
+        valor = self.valor
+        if self.tipo == 'P':
+            valor *= -1
+        self.carteira.saldo += valor
+        self.carteira.save()
+        return super().delete(using=using, keep_parents=keep_parents)

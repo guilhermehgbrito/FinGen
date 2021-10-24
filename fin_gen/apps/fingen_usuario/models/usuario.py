@@ -1,6 +1,7 @@
 from uuid import uuid4
 
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.core.validators import MinLengthValidator
 from django.db import models
 from fin_gen.apps.fingen_financeiro.models.moeda import moeda_default
 
@@ -41,7 +42,7 @@ class UsuarioManager(BaseUserManager):
 
 class Usuario(AbstractUser):
     id              = models.UUIDField('Id', primary_key=True, unique=True, default=uuid4)
-    telefone        = models.CharField('Telefone', max_length=11, unique=True)
+    telefone        = models.CharField('Telefone', max_length=11, unique=True, validators=[MinLengthValidator(11, "Necessário no mínimo 11 caracteres")])
     email           = models.EmailField('E-mail', unique=True)
     is_staff        = models.BooleanField('Equipe', default=False)
     criado_em       = models.DateTimeField('Data de criação', auto_now_add=True)
