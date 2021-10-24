@@ -29,7 +29,7 @@ def group_atividades_by_year(objects: Iterable[Atividade]) -> Dict:
 
 
 def atividades_mean(objects: Dict or None) -> float:
-    value = sum([y.valor for x in objects.values() for y in x])
+    value = sum([y.valor if y.tipo == 'P' else y.valor * -1 for x in objects.values() for y in x])
     
     return round(value / len(objects), 2)
 
@@ -38,19 +38,20 @@ def group_atividades_by_selected_year(objects: Iterable[Atividade], year: int = 
     group = {}
     for obj in objects:
         if obj.data_da_atividade.year == year:
+            valor = float(obj.valor) if obj.tipo == 'P' else float(obj.valor) * -1
             year_key = f'{year}'
             month_key = f'{obj.data_da_atividade.month}'
             if group.get(year_key, None) is None:
                 group[year_key] = {
-                    month_key: float(obj.valor)
+                    month_key: valor
                 }
             else:
                 if group[year_key].get(month_key, None) is None:
                     group[year_key].update({
-                        month_key: float(obj.valor)
+                        month_key: valor
                     })
                 else:
-                    group[year_key][month_key] += float(obj.valor)
+                    group[year_key][month_key] += valor
     if len(group) == 1:
         for i in range(1, 13):
             if f'{i}' in group[f'{year}']:
