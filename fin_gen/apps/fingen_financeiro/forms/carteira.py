@@ -5,8 +5,6 @@ from fin_gen.apps.fingen_financeiro.models import Carteira
 class CarteiraForm(forms.ModelForm):
     class Meta:
         model = Carteira
-        exclude = ['id', 'ativo']
+        exclude = ["id", "ativo"]
 
-        widgets = {
-            'usuario': forms.HiddenInput()
-        }
+        widgets = {"usuario": forms.HiddenInput()}

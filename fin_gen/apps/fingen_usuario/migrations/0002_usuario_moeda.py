@@ -8,13 +8,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fingen_usuario', '0001_initial'),
+        ("fingen_usuario", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='usuario',
-            name='moeda',
-            field=models.ForeignKey(default=fin_gen.apps.fingen_financeiro.models.moeda.moeda_default, on_delete=django.db.models.deletion.SET_DEFAULT, to='fingen_financeiro.moeda'),
+            model_name="usuario",
+            name="moeda",
+            field=models.ForeignKey(
+                default=fin_gen.apps.fingen_financeiro.models.moeda.moeda_default,
+                on_delete=django.db.models.deletion.SET_DEFAULT,
+                to="fingen_financeiro.moeda",
+            ),
         ),
     ]

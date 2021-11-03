@@ -7,13 +7,16 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fingen_atividade', '0002_auto_20211014_2127'),
+        ("fingen_atividade", "0002_auto_20211014_2127"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='atividade',
-            name='data_da_atividade',
-            field=models.DateField(default=django.utils.timezone.now, verbose_name='Data de vigência'),
+            model_name="atividade",
+            name="data_da_atividade",
+            field=models.DateField(
+                default=django.utils.timezone.now,
+                verbose_name="Data de vigência",
+            ),
         ),
     ]

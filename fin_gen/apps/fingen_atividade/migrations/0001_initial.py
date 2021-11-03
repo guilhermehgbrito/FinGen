@@ -11,55 +11,178 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('fingen_financeiro', '0001_initial'),
+        ("fingen_financeiro", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Icone',
+            name="Icone",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ativo', models.BooleanField(default=True, verbose_name='Ativo')),
-                ('criado_em', models.DateTimeField(auto_now_add=True, verbose_name='Data de criação')),
-                ('atualizado_em', models.DateTimeField(auto_now=True, verbose_name='Última atualização')),
-                ('descricao', models.CharField(max_length=32, unique=True, verbose_name='Descrição')),
-                ('valor', models.CharField(max_length=32, unique=True, verbose_name='Código')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "ativo",
+                    models.BooleanField(default=True, verbose_name="Ativo"),
+                ),
+                (
+                    "criado_em",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Data de criação"
+                    ),
+                ),
+                (
+                    "atualizado_em",
+                    models.DateTimeField(
+                        auto_now=True, verbose_name="Última atualização"
+                    ),
+                ),
+                (
+                    "descricao",
+                    models.CharField(
+                        max_length=32, unique=True, verbose_name="Descrição"
+                    ),
+                ),
+                (
+                    "valor",
+                    models.CharField(
+                        max_length=32, unique=True, verbose_name="Código"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Categoria',
+            name="Categoria",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ativo', models.BooleanField(default=True, verbose_name='Ativo')),
-                ('criado_em', models.DateTimeField(auto_now_add=True, verbose_name='Data de criação')),
-                ('atualizado_em', models.DateTimeField(auto_now=True, verbose_name='Última atualização')),
-                ('titulo', models.CharField(max_length=128, unique=True, verbose_name='Título')),
-                ('cor', models.CharField(help_text='Valor em hexadecimal. Ex:#FFFFFF', max_length=7, validators=[django.core.validators.MinLengthValidator(7)], verbose_name='Cor')),
-                ('icone', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='fingen_atividade.icone')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "ativo",
+                    models.BooleanField(default=True, verbose_name="Ativo"),
+                ),
+                (
+                    "criado_em",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Data de criação"
+                    ),
+                ),
+                (
+                    "atualizado_em",
+                    models.DateTimeField(
+                        auto_now=True, verbose_name="Última atualização"
+                    ),
+                ),
+                (
+                    "titulo",
+                    models.CharField(
+                        max_length=128, unique=True, verbose_name="Título"
+                    ),
+                ),
+                (
+                    "cor",
+                    models.CharField(
+                        help_text="Valor em hexadecimal. Ex:#FFFFFF",
+                        max_length=7,
+                        validators=[
+                            django.core.validators.MinLengthValidator(7)
+                        ],
+                        verbose_name="Cor",
+                    ),
+                ),
+                (
+                    "icone",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="fingen_atividade.icone",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Atividade',
+            name="Atividade",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ativo', models.BooleanField(default=True, verbose_name='Ativo')),
-                ('criado_em', models.DateTimeField(auto_now_add=True, verbose_name='Data de criação')),
-                ('atualizado_em', models.DateTimeField(auto_now=True, verbose_name='Última atualização')),
-                ('titulo', models.CharField(max_length=128, verbose_name='Título')),
-                ('descricao', models.CharField(max_length=256, verbose_name='Descrição')),
-                ('valor', models.DecimalField(decimal_places=2, max_digits=14, verbose_name='Valor')),
-                ('data_da_atividade', models.DateTimeField(default=django.utils.timezone.now, verbose_name='Data de vigência')),
-                ('categoria', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='fingen_atividade.categoria')),
-                ('moeda', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='fingen_financeiro.moeda')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "ativo",
+                    models.BooleanField(default=True, verbose_name="Ativo"),
+                ),
+                (
+                    "criado_em",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Data de criação"
+                    ),
+                ),
+                (
+                    "atualizado_em",
+                    models.DateTimeField(
+                        auto_now=True, verbose_name="Última atualização"
+                    ),
+                ),
+                (
+                    "titulo",
+                    models.CharField(max_length=128, verbose_name="Título"),
+                ),
+                (
+                    "descricao",
+                    models.CharField(max_length=256, verbose_name="Descrição"),
+                ),
+                (
+                    "valor",
+                    models.DecimalField(
+                        decimal_places=2, max_digits=14, verbose_name="Valor"
+                    ),
+                ),
+                (
+                    "data_da_atividade",
+                    models.DateTimeField(
+                        default=django.utils.timezone.now,
+                        verbose_name="Data de vigência",
+                    ),
+                ),
+                (
+                    "categoria",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="fingen_atividade.categoria",
+                    ),
+                ),
+                (
+                    "moeda",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="fingen_financeiro.moeda",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]
