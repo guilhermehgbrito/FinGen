@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}
+Relatórios
+{% endblock %}
+{% block main %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Tipos de relatórios</h6>
+    </div>
+    <div class="card-body">
+        <div class="card-group">
+            <div class="card" id="card-atividade-carteira">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Atividades por Carteira</h5>
+                    <p class="card-text">Relatório onde aprensenta dados filtrados por carteira, e se desejado, período
+                        de vigência, de todas as atividades feitas.</p>
+                    <div>
+                        <p class="text-muted">Selecione os filtros:</p>
+                        <div>
+                            <form action="{% url 'atividades_por_carteira' %}" method="POST" id="atividades_carteira">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="categoria">Carteira</label>
+                                    <select class="form-control" id="carteira" name="carteira" required>
+                                        {% for carteira in carteiras %}
+                                        <option value="{{ carteira.id }}">{{ carteira.nome }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <label for="data-inicio">Data de início</label>
+                                    <input type="date" name="data-inicio" id="data-inicio" class="form-control">
+                                    <label for="data-fim">Data de fim</label>
+                                    <input type="date" name="data-fim" id="data-fim" class="form-control">
+                                </div>
+                                {% buttons %}
+                                <button type="submit" class="btn btn-primary">Gerar relatório</button>
+                                {% endbuttons %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="card-atividades-geral">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Todas as Atividades</h5>
+                    <p class="card-text">Relatório onde apresenta todas as atividades feitas no período informado.</p>
+                    <div>
+                        <p class="text-muted">Selecione os filtros:</p>
+                        <div>
+                            <form action="{% url 'atividades_por_periodo' %}" method="POST" id="total_atividades">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="data-inicio">Data de início</label>
+                                    <input type="date" name="data-inicio" id="data-inicio" class="form-control">
+                                    <label for="data-fim">Data de fim</label>
+                                    <input type="date" name="data-fim" id="data-fim" class="form-control">
+                                </div>
+                                {% buttons %}
+                                <button type="submit" class="btn btn-primary">Gerar relatório</button>
+                                {% endbuttons %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="card-categoria">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Total por categoria</h5>
+                    <p class="card-text">Relatório onde apresenta os dados relacionados a categoria selecionada, e se
+                        desejado o período.</p>
+                    <div>
+                        <p class="text-muted">Selecione os filtros:</p>
+                        <div>
+                            <form action="{% url 'atividades_por_categoria' %}" method="POST" id="total_categoria">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="categoria">Categoria</label>
+                                    <select class="form-control" id="categoria" name="categoria" required>
+                                        {% for categoria in categorias %}
+                                        <option value="{{ categoria.id }}">{{ categoria.titulo }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <label for="data-inicio">Data de início</label>
+                                    <input type="date" name="data-inicio" id="data-inicio" class="form-control">
+                                    <label for="data-fim">Data de fim</label>
+                                    <input type="date" name="data-fim" id="data-fim" class="form-control">
+                                </div>
+                                {% buttons %}
+                                <button type="submit" class="btn btn-primary">Gerar relatório</button>
+                                {% endbuttons %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
