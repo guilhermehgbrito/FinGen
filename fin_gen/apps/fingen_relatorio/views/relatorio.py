@@ -115,7 +115,7 @@ def atividades_por_categoria(request):
 
         atividades = (
             Atividade.objects.select_related("categoria")
-            .filter(categoria=categoria)
+            .filter(categoria=categoria, carteira__usuario=request.user)
             .order_by("-data_da_atividade")
         )
 
