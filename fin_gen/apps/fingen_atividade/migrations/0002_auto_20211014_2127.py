@@ -7,20 +7,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fingen_financeiro', '0002_carteira'),
-        ('fingen_atividade', '0001_initial'),
+        ("fingen_financeiro", "0002_carteira"),
+        ("fingen_atividade", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='atividade',
-            name='carteira',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='fingen_financeiro.carteira'),
+            model_name="atividade",
+            name="carteira",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="fingen_financeiro.carteira",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='atividade',
-            name='tipo',
-            field=models.CharField(choices=[('P', 'Proventos'), ('D', 'Descontos')], default='P', max_length=1, verbose_name='Provento/Desconto'),
+            model_name="atividade",
+            name="tipo",
+            field=models.CharField(
+                choices=[("P", "Proventos"), ("D", "Descontos")],
+                default="P",
+                max_length=1,
+                verbose_name="Provento/Desconto",
+            ),
         ),
     ]

@@ -7,23 +7,58 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Moeda',
+            name="Moeda",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ativo', models.BooleanField(default=True, verbose_name='Ativo')),
-                ('criado_em', models.DateTimeField(auto_now_add=True, verbose_name='Data de criação')),
-                ('atualizado_em', models.DateTimeField(auto_now=True, verbose_name='Última atualização')),
-                ('codigo', models.CharField(help_text='Código da moeda. Ex: USD, BRL, EUR, etc.', max_length=3, verbose_name='Código')),
-                ('nome', models.CharField(max_length=64, verbose_name='Nome')),
-                ('simbolo', models.CharField(help_text='Símbolo monetário. Ex: R$, C$', max_length=4, null=True, verbose_name='Símbolo monetátio')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "ativo",
+                    models.BooleanField(default=True, verbose_name="Ativo"),
+                ),
+                (
+                    "criado_em",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Data de criação"
+                    ),
+                ),
+                (
+                    "atualizado_em",
+                    models.DateTimeField(
+                        auto_now=True, verbose_name="Última atualização"
+                    ),
+                ),
+                (
+                    "codigo",
+                    models.CharField(
+                        help_text="Código da moeda. Ex: USD, BRL, EUR, etc.",
+                        max_length=3,
+                        verbose_name="Código",
+                    ),
+                ),
+                ("nome", models.CharField(max_length=64, verbose_name="Nome")),
+                (
+                    "simbolo",
+                    models.CharField(
+                        help_text="Símbolo monetário. Ex: R$, C$",
+                        max_length=4,
+                        null=True,
+                        verbose_name="Símbolo monetátio",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

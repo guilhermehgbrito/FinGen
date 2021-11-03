@@ -2,8 +2,10 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-from fin_gen.apps.fingen_usuario.forms import (UsuarioChangeTemplate,
-                                               UsuarioPasswordChangeForm)
+from fin_gen.apps.fingen_usuario.forms import (
+    UsuarioChangeTemplate,
+    UsuarioPasswordChangeForm,
+)
 
 
 @login_required
@@ -21,6 +23,7 @@ def edita_usuario(request):
     else:
         return render(request, "fingen_usuario/editar.html", {"form": form})
 
+
 @login_required
 def edita_senha(request):
     form = UsuarioPasswordChangeForm(request.user)
@@ -35,4 +38,6 @@ def edita_senha(request):
             messages.error(request, "Erro ao gravar dados.")
             return redirect("index")
     else:
-        return render(request, "fingen_usuario/editar_senha.html", {"form": form})
+        return render(
+            request, "fingen_usuario/editar_senha.html", {"form": form}
+        )

@@ -9,23 +9,61 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('fingen_financeiro', '0001_initial'),
+        ("fingen_financeiro", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Carteira',
+            name="Carteira",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ativo', models.BooleanField(default=True, verbose_name='Ativo')),
-                ('criado_em', models.DateTimeField(auto_now_add=True, verbose_name='Data de criação')),
-                ('atualizado_em', models.DateTimeField(auto_now=True, verbose_name='Última atualização')),
-                ('nome', models.CharField(max_length=128, verbose_name='Nome')),
-                ('saldo', models.DecimalField(decimal_places=2, default=0, max_digits=15, verbose_name='Saldo')),
-                ('usuario', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "ativo",
+                    models.BooleanField(default=True, verbose_name="Ativo"),
+                ),
+                (
+                    "criado_em",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Data de criação"
+                    ),
+                ),
+                (
+                    "atualizado_em",
+                    models.DateTimeField(
+                        auto_now=True, verbose_name="Última atualização"
+                    ),
+                ),
+                (
+                    "nome",
+                    models.CharField(max_length=128, verbose_name="Nome"),
+                ),
+                (
+                    "saldo",
+                    models.DecimalField(
+                        decimal_places=2,
+                        default=0,
+                        max_digits=15,
+                        verbose_name="Saldo",
+                    ),
+                ),
+                (
+                    "usuario",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

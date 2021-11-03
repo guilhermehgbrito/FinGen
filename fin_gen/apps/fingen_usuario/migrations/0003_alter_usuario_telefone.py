@@ -7,13 +7,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fingen_usuario', '0002_usuario_moeda'),
+        ("fingen_usuario", "0002_usuario_moeda"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='usuario',
-            name='telefone',
-            field=models.CharField(max_length=11, unique=True, validators=[django.core.validators.MinLengthValidator(11, 'Necessário no mínimo 11 caracteres')], verbose_name='Telefone'),
+            model_name="usuario",
+            name="telefone",
+            field=models.CharField(
+                max_length=11,
+                unique=True,
+                validators=[
+                    django.core.validators.MinLengthValidator(
+                        11, "Necessário no mínimo 11 caracteres"
+                    )
+                ],
+                verbose_name="Telefone",
+            ),
         ),
     ]

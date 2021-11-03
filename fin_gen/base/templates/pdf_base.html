@@ -1,0 +1,116 @@
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% bootstrap_css %}
+    <title>Relatório</title>
+    <style>
+        @page {
+            size: 210 297 portrait;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-center-row {
+            justify-content: center;
+        }
+
+        .flex-center-column {
+            align-items: center;
+        }
+
+        .flex-row {
+            flex-direction: column;
+        }
+
+        .column {
+            max-width: 50%;
+            
+        }
+
+        .bb {
+            border-bottom: 2px solid black;
+        }
+
+        .bt {
+            border-top: 2px solid black;
+        }
+
+        .bl {
+            border-left: 2px solid black;
+        }
+
+        .br {
+            border-right: 2px solid black;
+        }
+
+        .ab {
+            border: 2px solid black;
+        }
+
+        .m-0 {
+            margin: 0px;
+        }
+
+        .mw-100 {
+            max-width: 100%;
+        }
+
+        div.content {
+            text-align: left;
+        }
+
+        .fs-small {
+            font-size: small;
+        }
+
+        .fs-medium {
+            font-size: medium;
+            font-weight: bold;
+        }
+
+        .fs-xxsmall {
+            font-size: xx-small;
+        }
+
+    </style>
+</head>
+<body class="m-0">
+    <header class="ab">
+        <div class="d-flex flex-column bb p-2">
+            <h1 class="m-0 mw-100 fs-medium">{% block title %}{% endblock title %}</h1>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <div class="d-flex content flex-column w-50 br ps-1 py-3 fs-small">
+                <p class="m-1 text-nowrap"><strong>Nome:</strong> {{ user.get_full_name }}</p>
+                <p class="m-1 text-nowrap"><strong>Email:</strong> {{ user.email }}</p>
+                <p class="m-1 text-nowrap"><strong>Telefone:</strong> {{ user.telefone }}</p>
+            </div>
+            <div class="d-flex content flex-column w-50 px-1 py-3 fs-small">
+                {% if filtrar_periodo %}
+                <p class="m-1 text-nowrap"><strong>Data de início:</strong> {{ data_de_inicio|date:"d/m/Y" }}</p>
+                <p class="m-1 text-nowrap"><strong>Data de fim:</strong> {{ data_de_fim|date:"d/m/Y" }}</p>
+                {% endif %}
+                <p class="m-1 text-nowrap"><strong>Tipo:</strong> {{ tipo_de_relatorio }}</p>
+            </div>
+        </div>
+    </header>
+    <main class="bb bl br p-0">
+        <div class="content m-0 fs-small">
+             {% block main %}{% endblock main %}
+        </div>
+    </main>
+    <footer class="bb bl br text-center text-black-50 p-1 fs-xxsmall">
+        <span>Copyright &copy; FinGen 2021</span>
+    </footer>
+</body>
+</html>
