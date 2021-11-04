@@ -174,7 +174,10 @@ def atividades_por_periodo(request):
 
         atividades = (
             Atividade.objects.select_related("categoria")
-            .filter(data_da_atividade__range=[data_inicio, data_fim])
+            .filter(
+                data_da_atividade__range=[data_inicio, data_fim],
+                carteira__usuario=request.user,
+            )
             .order_by("-data_da_atividade")
         )
 
